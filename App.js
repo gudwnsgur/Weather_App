@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image} from 'react-native';
+import { StyleSheet, Text, View, StatusBar} from 'react-native';
 import Weather from "./Weather";
 
 
 export default class App extends Component {
   state = {
-    isLoaded : true
+    isLoaded : false
   }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition( position =>
+    {
+      this.setState({
+        isLoaded : true
+      });
+    },
+    error => {
+      console.log(error);
+    }
+    )
+  }
+
   render() {
     const { isLoaded } = this.state;
     return (
      <View style={styles.container}>
+      <StatusBar hidden={true}/>
        { isLoaded ? ( <Weather /> ) : (
         <View style={styles.Loading}>
           <Text style={styles.LoadingText}>
-            Getting the weather information
+            Getting weather information
           </Text>
         </View>
        ) }
@@ -35,7 +50,7 @@ const styles = StyleSheet.create({
   },
   LoadingText : {
     fontSize : 35,
-    marginBottom : 100
+    marginBottom : 24
   }
 });
 
