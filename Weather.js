@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { LinearGradient } from 'expo';
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 
 /*
@@ -28,51 +28,59 @@ const weatherCases = {
         colors:['#00C6FB','#005BEA'],
         title : "Raining",
         subtitle : "For more info look outside.",
-        icon : 'ios-rainy'
+        icon : 'weather-rainy'
     },
     Clear : {
         colors:['#FEF253','#FF7300'],
         title : "Sunny",
         subtitle : "Go get your body burnt.",
-        icon : 'ios-sunny'
+        icon : 'weather-sunny'
     },
     Thunderstorm : {
         colors:['#00ECBC','#007ADF'],
         title : "Thunderstorm",
         subtitle : "Actually, outside of the house",
-        icon : 'ios-thunderstorm'
+        icon : 'weather-lightning'
     },
     Clouds : {
         colors:['#D7D2CC','#304352'],
         title : "Clouds",
         subtitle : "I know, fucking boring.",
-        icon : 'ios-cloudy'
+        icon : 'weather-cloudy'
     },
     Snow : {
         colors:['#7DE2FC','#89B6ES'],
         title : "Snowy",
         subtitle : "Do you want to build a snowman~?",
-        icon : 'ios-snow'
+        icon : 'weather-snowy'
     },
     Drizzle : {
         colors:['#89F7FE','#66A6FF'],
         title : "Drizzle",
         subtitle : "it's like rain.",
-        icon : 'md-rainy'
+        icon : 'weather-hail'
     },
     Haze : {
         colors:['#89F7FE','#66A6FF'],
         title : "Haze",
         subtitle : "What's going on?",
-        icon : 'ios-cloud-outline'
+        icon : 'weather-hail'
+    },
+    Mist : {
+        colors:['#D7D2CC','#304352'],
+        title : "Mist",
+        subtitle : "It's like you have no glasses",
+        icon : 'weather-fog'
     }
-}
+};
 
 function Weather ({ weatherName, temp }) {
     return (
-        <LinearGradient colors = {weatherCases[weatherName].colors} style = {styles.container} >
+        <LinearGradient 
+            colors = {weatherCases[weatherName].colors} 
+            style = {styles.container} >
          <View style={styles.upper}>
-             <Ionicons color = "white" size={144} name={weatherCases[weatherName].icon}/>
+             <MaterialCommunityIcons color = "white" size={144} name={weatherCases[weatherName].icon}/>
              <Text style={styles.temp}>{temp}º</Text>
          </View>
          <View style={styles.lower}>
